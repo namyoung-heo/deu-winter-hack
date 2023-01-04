@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import com.example.entity.AddressEntity;
-import com.example.repository.UserEntity;
+import com.example.entity.UserEntity;
 import com.example.repository.AddressRepository;
 import com.example.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;

@@ -1,4 +1,4 @@
-package com.example.repository;
+package com.example.entity;
 
 import lombok.*;
 
@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import com.example.entity.AddressEntity;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
