@@ -23,5 +23,6 @@ public class CategoryEntity {
     public CategoryEntity(Long categoryId, String categoryName){
         this.categoryId = categoryId;
         this.categoryName = categoryName;
+        //
     }
 }
