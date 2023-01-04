@@ -1,9 +1,8 @@
-package com.example.demo;
+package com.example.repository;
 
 
 import lombok.*;
 import javax.persistence.*;
-import java.util.List;
 
 
 @AllArgsConstructor
@@ -11,7 +10,7 @@ import java.util.List;
 @Getter
 @Builder
 @Entity
-public class Product /*extends Timestamped*/ {
+public class ProductEntity extends TimeEntity {
 
     @Id
     @Column(name = "product_id", nullable = false )
