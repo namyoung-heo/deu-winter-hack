@@ -20,13 +20,20 @@ public class CartEntity {
 
     //사용자와 단방향
     @ManyToOne
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_member_id")
     @ToString.Exclude
     private MemberEntity memberEntity;
 
+    //상품과 단방향
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    @ToString.Exclude
+    private ProductEntity productEntity;
+
     @Builder
-    public CartEntity(Long cartId, MemberEntity memberEntity){
+    public CartEntity(Long cartId, MemberEntity memberEntity,ProductEntity productEntity){
         this.cartId = cartId;
         this.memberEntity = memberEntity;
+        this.productEntity = productEntity;
     }
 }
