@@ -11,8 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name="user")
-public class UserEntity extends TimeEntity{
+@Table(name="member")
+public class MemberEntity extends TimeEntity{
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -40,16 +40,24 @@ public class UserEntity extends TimeEntity{
     @Column(length = 100, nullable = false)
     private LocalDateTime birth;
 
+    //AddressEntity와 단방향
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "member_id")
     @ToString.Exclude
     private List<AddressEntity> addresses = new ArrayList<>();
 
+    //MemberEntity 양방향
+    @OneToMany(mappedBy = "memberEntity")
+    //@JoinColumn(name="member_id")
+    private List<CartEntity> carts = new ArrayList<>();
+
+    //InquiryEntity와 양방향
+
 
     @Builder
-    public UserEntity(Long memberId, String id, String password, String name, String email,
-                      String phone, String sex, LocalDateTime birth,
-                      List<AddressEntity> addresses){
+    public MemberEntity(Long memberId, String id, String password, String name, String email,
+                        String phone, String sex, LocalDateTime birth,
+                        List<AddressEntity> addresses){
         this.memberId = memberId;
         this.id = id;
         this.password = password;

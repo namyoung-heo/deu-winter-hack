@@ -16,13 +16,12 @@ public class CategoryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
-    @Column
+    @Column(length = 200, nullable = false)
     private String categoryName;
 
     @Builder
     public CategoryEntity(Long categoryId, String categoryName){
         this.categoryId = categoryId;
         this.categoryName = categoryName;
-
     }
 }
