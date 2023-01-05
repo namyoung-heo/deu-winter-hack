@@ -28,4 +28,12 @@ public class ProductEntity extends TimeEntity {
 
     @Column(nullable = false)
     private String product_detail;
+
+    //CategoryEntity랑 단방향
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    @ToString.Exclude
+    private CartEntity cartEntity;
+
+    //빌더 작성 요망
 }

@@ -1,9 +1,9 @@
 package com.example.demo;
 
 import com.example.entity.AddressEntity;
-import com.example.entity.UserEntity;
+import com.example.entity.MemberEntity;
 import com.example.repository.AddressRepository;
-import com.example.repository.UserRepository;
+import com.example.repository.MemberRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.Arrays;
 class Demo1ApplicationTests {
 
     @Autowired
-    UserRepository userRepository;
+    MemberRepository memberRepository;
 
     @Autowired
     AddressRepository addressRepository;
@@ -32,7 +32,7 @@ class Demo1ApplicationTests {
                 .address("1")
                 .build();
 
-        UserEntity user = UserEntity.builder()
+        MemberEntity member = MemberEntity.builder()
                 .memberId(1L)
                 .id("asd")
                 .password("1")
@@ -45,8 +45,8 @@ class Demo1ApplicationTests {
 
         addressRepository.save(address);
         addressRepository.save(address1);
-        user.setAddresses(Arrays.asList(address,address1));
-        userRepository.save(user);
+        member.setAddresses(Arrays.asList(address,address1));
+        memberRepository.save(member);
     }
 
 }
