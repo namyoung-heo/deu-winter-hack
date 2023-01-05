@@ -34,8 +34,7 @@ public class InquiryEntity extends TimeEntity{
     //ProductEntity와 단방향
     @ManyToOne
     @JoinColumn(name = "product_id")
-    @ToString.Exclude
-    private ProductEntity productEntity;
+    @ToString.Exclude    private ProductEntity productEntity;
 
     //MemberEntity와 양방향
     @ManyToOne

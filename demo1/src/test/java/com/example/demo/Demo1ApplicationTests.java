@@ -1,14 +1,9 @@
 package com.example.demo;
 
-import com.example.entity.AddressEntity;
-import com.example.entity.CartEntity;
-import com.example.entity.MemberEntity;
-import com.example.entity.ProductEntity;
-import com.example.repository.AddressRepository;
-import com.example.repository.CartRepository;
-import com.example.repository.MemberRepository;
-import com.example.repository.ProductRepository;
+import com.example.entity.*;
+import com.example.repository.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,13 +26,15 @@ class Demo1ApplicationTests {
 
     @Autowired
     ProductRepository productRepository;
+    @Autowired
+    OrderRepository orderRepository;
 
     @Test
     @DisplayName("유저 배송지 여러 개 테스트")
     void contextLoads() {
 
         AddressEntity address = AddressEntity.builder()
-                .address("1")
+                .address("부산시")
                 .build();
         AddressEntity address1 = AddressEntity.builder()
                 .address("1")
@@ -57,11 +54,28 @@ class Demo1ApplicationTests {
         addressRepository.save(address1);
         member.setAddresses(Arrays.asList(address,address1));
         memberRepository.save(member);
-        //System.out.println("-----"+memberRepository.findById(1L));
+        List<AddressEntity> addressEntities = memberRepository.findById(1L).get().getAddresses();
+        for(AddressEntity found : addressEntities){
+            AddressEntity a = addressEntities.get(0);
+            AddressEntity a1 = addressEntities.get(1);
+            System.out.println("주소"+a.getAddress());
+            System.out.println("주소"+a1.getAddress());
+            System.out.println(addressEntities);
+        }
+    }
+    @Test
+    @DisplayName("카테고리 상품 테스트")
+    void CategoryProduct() {
+        CategoryEntity category;
+        ProductEntity productEntity;
+
+        OrderEntity orderEntity;
+
+
     }
 
     @Test
-    @DisplayName("유저 카드 테스트")
+    @DisplayName("유저 카트 테스트")
     void UserCartTest() {
         ProductEntity product = ProductEntity.builder()
                 .id(1L)

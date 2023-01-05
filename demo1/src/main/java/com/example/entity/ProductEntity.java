@@ -3,6 +3,8 @@ package com.example.entity;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -10,6 +12,7 @@ import javax.persistence.*;
 @Getter
 @Builder
 @Entity
+@Table(name = "product")
 public class ProductEntity extends TimeEntity {
 
     @Id
@@ -34,6 +37,10 @@ public class ProductEntity extends TimeEntity {
     @JoinColumn(name = "category_id")
     @ToString.Exclude
     private CartEntity cartEntity;
+
+    @OneToMany
+    @JoinColumn(name = "product_id")
+    private List<ProductGalleryEntity> gallery = new ArrayList<>();
 
     //빌더 작성 요망
 }

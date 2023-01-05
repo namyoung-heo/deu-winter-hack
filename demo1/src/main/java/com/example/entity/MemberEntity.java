@@ -42,12 +42,13 @@ public class MemberEntity extends TimeEntity{
 
     //AddressEntity와 단방향
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "member_member_id")
+    @JoinColumn(name = "member_id")
     @ToString.Exclude
     private List<AddressEntity> addresses = new ArrayList<>();
 
-    @OneToMany(mappedBy = "memberEntity", fetch = FetchType.EAGER)
-    @ToString.Exclude
+    //MemberEntity 양방향
+    @OneToMany(mappedBy = "memberEntity")
+    //@JoinColumn(name="member_id")
     private List<CartEntity> carts = new ArrayList<>();
 
     //InquiryEntity와 양방향
@@ -56,8 +57,7 @@ public class MemberEntity extends TimeEntity{
     @Builder
     public MemberEntity(Long memberId, String id, String password, String name, String email,
                         String phone, String sex, LocalDateTime birth,
-                        List<AddressEntity> addresses,
-                        List<CartEntity> carts){
+                        List<AddressEntity> addresses){
         this.memberId = memberId;
         this.id = id;
         this.password = password;
@@ -67,6 +67,5 @@ public class MemberEntity extends TimeEntity{
         this.sex = sex;
         this.birth = birth;
         this.addresses = addresses;
-        this.carts = carts;
     }
 }

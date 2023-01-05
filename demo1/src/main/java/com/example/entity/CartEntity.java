@@ -20,7 +20,7 @@ public class CartEntity {
 
     //사용자와 단방향
     @ManyToOne
-    @JoinColumn(name = "member_member_id")
+    @JoinColumn(name = "member_id")
     @ToString.Exclude
     private MemberEntity memberEntity;
 
