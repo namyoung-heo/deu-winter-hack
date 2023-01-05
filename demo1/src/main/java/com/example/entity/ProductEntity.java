@@ -10,7 +10,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Builder
 @Entity
 @Table(name = "product")
 public class ProductEntity extends TimeEntity {

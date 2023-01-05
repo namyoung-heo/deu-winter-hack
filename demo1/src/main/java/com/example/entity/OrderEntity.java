@@ -17,7 +17,7 @@ public class OrderEntity extends TimeEntity{
     @ManyToOne
     @JoinColumn(name = "member_id")
     @ToString.Exclude
-    private MemberEntity memberEntity;
+    private UserEntity memberEntity;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -25,7 +25,7 @@ public class OrderEntity extends TimeEntity{
     private ProductEntity productEntity;
 
     @Builder
-    public OrderEntity(Long orderId, MemberEntity memberEntity){
+    public OrderEntity(Long orderId, UserEntity memberEntity){
         this.orderId = orderId;
         this.memberEntity = memberEntity;
     }

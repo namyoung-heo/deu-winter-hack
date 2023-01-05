@@ -40,7 +40,7 @@ public class InquiryEntity extends TimeEntity{
     @ManyToOne
     @JoinColumn(name = "member_id")
     @ToString.Exclude
-    private MemberEntity memberEntity;
+    private UserEntity memberEntity;
 
     //빌더 작성
 
