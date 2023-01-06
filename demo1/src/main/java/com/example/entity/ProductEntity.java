@@ -1,46 +1,90 @@
 package com.example.entity;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import lombok.*;
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
-
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Builder
 @Entity
 @Table(name = "product")
 public class ProductEntity extends TimeEntity {
 
     @Id
-    @Column(name = "product_id", nullable = false )
+    @Column(name = "product_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String title;
+    private String brand;
 
-    @Column(length = 1000)
-    private String imageUrl;
+    @Column(nullable = false)
+    private String productName;
+
+    @Column(nullable = false)
+    private String oneLineDescription;
 
     @Column(nullable = false)
     private int price;
 
     @Column(nullable = false)
-    private String product_detail;
+    private int discountRate;
+
+    @Column(nullable = false)
+    private int stock;
+
+    @Column(nullable = false)
+    private String deliveryType;
+
+    @Column(nullable = false)
+    private String seller;
+
+    @Column(nullable = false)
+    private String packagingType;
+
+    @Column(nullable = false)
+    private String saleUnit;
+
+    @Column(nullable = false)
+    private String capacity;
+
+    @Column(nullable = false)
+    private String origin;
 
     //CategoryEntity랑 단방향
     @ManyToOne
     @JoinColumn(name = "category_id")
     @ToString.Exclude
-    private CartEntity cartEntity;
+    private CategoryEntity categoryEntity;
 
-    @OneToMany
-    @JoinColumn(name = "product_id")
-    private List<ProductGalleryEntity> gallery = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "gallery_id")
+    private ProductGalleryEntity productGalleryEntity;
 
-    //빌더 작성 요망
+    @OneToOne
+    @JoinColumn(name = "page_id")
+    private ProductPageEntity productPageEntity;
+
+    @Builder
+    public ProductEntity(Long id, String brand, String productName, String oneLineDescription, int price, int discountRate, int stock, String deliveryType, String seller, String packagingType, String saleUnit, String capacity, String origin, CategoryEntity categoryEntity, ProductGalleryEntity productGalleryEntity, ProductPageEntity productPageEntity) {
+        this.id = id;
+        this.brand = brand;
+        this.productName = productName;
+        this.oneLineDescription = oneLineDescription;
+        this.price = price;
+        this.discountRate = discountRate;
+        this.stock = stock;
+        this.deliveryType = deliveryType;
+        this.seller = seller;
+        this.packagingType = packagingType;
+        this.saleUnit = saleUnit;
+        this.capacity = capacity;
+        this.origin = origin;
+        this.categoryEntity = categoryEntity;
+        this.productGalleryEntity = productGalleryEntity;
+        this.productPageEntity = productPageEntity;
+    }
 }

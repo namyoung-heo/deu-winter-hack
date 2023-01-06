@@ -79,17 +79,17 @@ class Demo1ApplicationTests {
     void UserCartTest() {
         ProductEntity product = ProductEntity.builder()
                 .id(1L)
-                .title("제")
-                .imageUrl("img")
+//                .title("제")
+//                .imageUrl("img")
                 .price(1)
-                .product_detail("a")
+//                .product_detail("a")
                 .build();
         ProductEntity product1 = ProductEntity.builder()
                 .id(1L)
-                .title("제")
-                .imageUrl("img")
+//                .title("제")
+//                .imageUrl("img")
                 .price(1)
-                .product_detail("a")
+//                .product_detail("a")
                 .build();
         MemberEntity member = MemberEntity.builder()
                 .id("1")
