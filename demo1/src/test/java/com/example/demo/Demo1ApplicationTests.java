@@ -73,6 +73,7 @@ class Demo1ApplicationTests {
     @Test
     @DisplayName("카테고리 상품 테스트")
     void CategoryProduct() {
+
 //        CategoryEntity category;
 //        ProductEntity productEntity;
 //

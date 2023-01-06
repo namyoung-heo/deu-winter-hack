@@ -25,8 +25,9 @@ public class OrderEntity extends TimeEntity{
     private ProductEntity productEntity;
 
     @Builder
-    public OrderEntity(Long orderId, UserEntity memberEntity){
+    public OrderEntity(Long orderId, MemberEntity memberEntity, ProductEntity productEntity){
         this.orderId = orderId;
         this.memberEntity = memberEntity;
+        this.productEntity = productEntity;
     }
 }
