@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.dto.SignInResultDto;
 import com.example.dto.SignUpResultDto;
+import com.example.dto.UserDto;
 import com.example.service.SignService;
 import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
@@ -10,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -53,6 +56,31 @@ public class SignController {
 
         LOGGER.info("[signup] 회원가입을 완료했습니다. id : {}",id);
         return signUpResultDto;
+    }
+    @PostMapping(value ="/member/signup")
+    public SignUpResultDto signUp1(@RequestBody UserDto userDto){
+
+        SignUpResultDto signUpResultDto = signService.signUp(userDto.getUid(), userDto.getPassword(),
+                userDto.getName(),userDto.getRoles().get(0).toString());
+        return signUpResultDto;
+    }
+    //아이디 중복 체크
+    @PostMapping("/member/regit/{uid}")
+    public String idDuplication(@RequestParam String uid) {
+        //uid를 받아와
+        //데이터베이스에 있는지 확인
+        //있으면 OK
+        //없으면 BAD_REQUEST
+        String result = signService.idCheck(uid);
+
+        return result;
+    }
+    @GetMapping("/member/regit/{email}")
+    public String emailDuplication(Model model, @RequestParam(value="page", defaultValue = "1") Integer pageNum) {
+        //email을 파라미터로 받아서
+        //데이터베이스에 있는지 없는지만 확인
+
+        return "board/list.html";
     }
 
     @GetMapping(value = "/exception")

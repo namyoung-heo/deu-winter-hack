@@ -75,19 +75,19 @@ public class UserEntity extends TimeEntity implements UserDetails {
         return true;
     }
 
-//    @Column(length = 100, nullable = false)
-//    private String email;
-//
-//    @Column(length = 100, nullable = false)
-//    private String phone;
-//
-//    @Column(length = 100, nullable = false)
-//    private String sex;
-//
-//    @Column(length = 100, nullable = false)
-//    private LocalDateTime birth;
+    @Column(length = 100)
+    private String email;
 
-    //AddressEntity와 단방향
+    @Column(length = 100)
+    private String phone;
+
+    @Column(length = 100)
+    private String sex;
+
+    @Column(length = 100)
+    private LocalDateTime birth;
+
+//    //AddressEntity와 단방향
 //    @OneToMany(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "user_id")
 //    @ToString.Exclude

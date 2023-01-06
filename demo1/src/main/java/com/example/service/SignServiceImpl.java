@@ -11,9 +11,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SignServiceImpl implements SignService{
@@ -23,6 +28,7 @@ public class SignServiceImpl implements SignService{
     public UserRepository userRepository;
     public JwtTokenProvider jwtTokenProvider;
     public PasswordEncoder passwordEncoder;
+
 
     //회원가입과 로그인 위한 의존성 주입받음
     @Autowired
@@ -89,6 +95,20 @@ public class SignServiceImpl implements SignService{
         setSuccesResult(signInResultDto);
 
         return signInResultDto;
+    }
+
+    public String idCheck(String uid){
+        UserEntity user = userRepository.getByUid(uid);
+
+        if(user == null) {
+
+            return "BAD_REQUEST";	// 중복 아이디가 존재
+
+        } else {
+
+            return "OK";	// 중복 아이디 x
+
+        }
     }
 
     private void setSuccesResult(SignUpResultDto result){

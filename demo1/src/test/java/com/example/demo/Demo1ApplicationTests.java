@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.entity.*;
 import com.example.repository.*;
+import com.example.service.SignServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,11 @@ import java.util.List;
 @SpringBootTest
 class Demo1ApplicationTests {
 
-//    @Autowired
-//    UserRepository memberRepository;
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    SignServiceImpl signService;
 //
 //    @Autowired
 //    AddressRepository addressRepository;
@@ -31,6 +35,10 @@ class Demo1ApplicationTests {
     @Test
     @DisplayName("유저 배송지 여러 개 테스트")
     void contextLoads() {
+
+        System.out.println( userRepository.getByUid("gjskadud").getUid());
+
+        System.out.println(signService.idCheck("gjskad"));
 
 //        AddressEntity address = AddressEntity.builder()
 //                .address("부산시")
