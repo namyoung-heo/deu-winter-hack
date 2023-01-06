@@ -13,12 +13,14 @@ import javax.persistence.*;
 public class ProductGalleryEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+    private Long galleryId;
 
-    @Column(length = 50, nullable = false)
-    private String fileTitle;
+    @Column(length = 1000)
+    private String galleryImageUrl;
 
-    @Column(columnDefinition = "TEXT")
-    private String filePath;
-
+    @Builder
+    public ProductGalleryEntity(Long galleryId, String galleryImageUrl) {
+        this.galleryId = galleryId;
+        this.galleryImageUrl = galleryImageUrl;
+    }
 }
