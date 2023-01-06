@@ -17,7 +17,7 @@ public class OrderEntity extends TimeEntity{
     @ManyToOne
     @JoinColumn(name = "member_id")
     @ToString.Exclude
-    private MemberEntity memberEntity;
+    private UserEntity memberEntity;
 
     @ManyToOne
     @JoinColumn(name = "product_id")

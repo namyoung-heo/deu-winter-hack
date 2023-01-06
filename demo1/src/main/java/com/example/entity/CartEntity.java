@@ -1,7 +1,6 @@
 package com.example.entity;
 
 import lombok.*;
-import org.apache.catalina.User;
 
 import javax.persistence.*;
 
@@ -22,7 +21,7 @@ public class CartEntity {
     @ManyToOne
     @JoinColumn(name = "member_id")
     @ToString.Exclude
-    private MemberEntity memberEntity;
+    private UserEntity memberEntity;
 
     //상품과 단방향
     @ManyToOne
@@ -31,7 +30,7 @@ public class CartEntity {
     private ProductEntity productEntity;
 
     @Builder
-    public CartEntity(Long cartId, MemberEntity memberEntity,ProductEntity productEntity){
+    public CartEntity(Long cartId, UserEntity memberEntity, ProductEntity productEntity){
         this.cartId = cartId;
         this.memberEntity = memberEntity;
         this.productEntity = productEntity;
